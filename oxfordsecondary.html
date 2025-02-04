@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+      A5 = {};
+      A5.LMS_APIS = "Author,Console";
+      A5.ENGINE_ROOT = "//author-engine-production.avallain.net/buckminster-43.0.0/";
+      A5.SKIN_URL = "https://cdn.oxfordsecondary.co.uk/products/925/content/sk/";
+      A5.SKIN_TYPE = "git";
+      A5.TOOLBELT_URL = "//avallain-toolbelt-prod.avallain.net";
+      A5.GEOGEBRA = "//author-engine-production.avallain.net/geogebra/v5-0-672-0/HTML5/5.0/web/";
+      A5.MATHJAX = "//author-engine-production.avallain.net/mathjax/2.7.1";
+      A5.CKEDITOR_RELATIVE = false;
+
+      A5.WIRIS_QUIZ_VALIDATION_SERVICE_URL = "";
+      A5.AUDIO_FORMATS = "mp3";
+      A5.ITEM_BANK_API_URL = "https://api-author-oxed-prod.avallain.net/api/v2/items_bank_items_for_engine";
+      A5.WIRIS_QUIZ_LIBRARY_RESOURCES_URL = "//author-engine-production.avallain.net/wirisquiz/4.9.4/resources";
+      A5.VIDEO_FORMATS = "hls,mp4";
+      A5.ACUDA = "";
+
+      A5.AUDIO_URL_BUILDER = function (id, format) {
+        var cdn =
+          id.indexOf("r5_") === 0
+            ? "https://lnr-runtime-assets.s3-website-eu-west-1.amazonaws.com"
+            : "https://assets-runtime-production-oxed-oup.avallain.net";
+        return cdn + "/" + id + "." + format;
+      };
+
+      A5.VIDEO_URL_BUILDER = function (id, format) {
+        if (format == "hls") {
+          return ("https://assets-runtime-production-oxed-oup.avallain.net/" + id + "/hls_playlist.m3u8");
+        } else {
+          return ("https://assets-runtime-production-oxed-oup.avallain.net/" + id + "." + format);
+        }
+      };
+
+      // Get the book parameter from the URL or default to 925
+      const urlParams = new URLSearchParams(window.location.search);
+      let book = urlParams.get("book") || "925";
+
+      // Construct the script URL dynamically
+      let scriptUrl = `https://cdn.oxfordsecondary.co.uk/products/${book}/content/data.js`;
+
+      // Function to dynamically load the script
+      function loadScript(url) {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.async = true; // Ensures non-blocking execution
+        script.onerror = function () {
+          console.error("Failed to load script:", url);
+        };
+        document.head.appendChild(script); // Append to head for earlier execution
+      }
+
+      // Load the script
+      loadScript(scriptUrl);
+      
+    </script>
+
+    <title>Oxford Secondary Book Viewer</title>
+
+    <script type="text/javascript">
+      function a5_init($) {
+        window.LOInfo = {};
+
+        window.LOInfo.assessmentOptions = "";
+        window.LOInfo.LOOptions =
+          '<options data-author="options-v2"><option id="368"><key>on</key></option><option id="341"><key>off</key></option><option id="578"><key>off</key></option><option id="576"><key>off</key></option><option id="579"><key>on</key></option><option id="577"><key>on</key></option><option id="054"><key>false</key></option><option id="566"><key>off</key></option><option id="574"><key>on</key></option><option id="575"><key>on</key></option></options>';
+        window.LOInfo.mode = "Normal";
+
+        window.LOInfo.lotype = "ebook";
+        window.LOInfo.mediaURL = "";
+        window.LOInfo.toolBeltURL = "//avallain-toolbelt-prod.avallain.net";
+        window.LOInfo.UID = "";
+        window.LOInfo.geoGebra = "//author-engine-production.avallain.net/geogebra/v5-0-672-0/HTML5/5.0/web/";
+        window.LOInfo.assetCDNURL = "https://assets-runtime-production-oxed-oup.avallain.net";
+        window.LOInfo.name = "bks_myp_maths_ext_dbsb";
+        window.LOInfo.mathJAX = "//author-engine-production.avallain.net/mathjax/2.7.1";
+        window.LOInfo.ID = "";
+        window.LOInfo.lang = "en";
+
+        var engine = new a5.Engine();
+        engine.initialize();
+      }
+    </script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .spinner {
+        background: url("//author-engine-production.avallain.net/buckminster-43.0.0/images/spinner.gif")
+          no-repeat center center white;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 10000;
+      }
+    </style>
+
+    <script src="https://cdn.oxfordsecondary.co.uk/assets/ebooks-9d7505d5472458463a1ed980d791da4b.js"></script>
+
+  </head>
+  <body>
+    <div class="spinner"></div>
+
+    <script
+      type="text/javascript"
+      src="//author-engine-production.avallain.net/buckminster-43.0.0/player.js"
+    ></script>
+    <script>
+      window.onload = function () {
+        a5_init(jQuery);
+      };
+    </script>
+  </body>
+</html>
